@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена | МАНДОЛИНА</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --color-green: #2C4C3B; --color-gold: #C5A059; --color-white: #FFFFFF; --font-heading: 'Cormorant Garamond', serif; --font-body: 'Montserrat', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background-color: var(--color-green); color: var(--color-white); display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 20px; }
+        .error-container { max-width: 800px; }
+        h1 { font-family: var(--font-heading); font-size: 8rem; color: var(--color-gold); line-height: 1; margin-bottom: 20px; }
+        h2 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 20px; }
+        p { font-size: 1.1rem; color: #ccc; margin-bottom: 40px; }
+        .btn { display: inline-block; padding: 15px 30px; border: 1px solid var(--color-gold); color: var(--color-gold); text-decoration: none; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; transition: all 0.3s; margin-bottom: 40px; }
+        .btn:hover { background-color: var(--color-gold); color: var(--color-green); }
+        
+        .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; border-top: 1px solid rgba(197, 160, 89, 0.3); padding-top: 40px; text-align: left; }
+        .contact-col { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 8px; }
+        .contact-name { color: var(--color-gold); font-weight: 600; font-size: 1.5rem; margin-bottom: 15px; text-transform: uppercase; }
+        .contact-link { display: flex; align-items: center; gap: 10px; color: var(--color-white); text-decoration: none; margin-bottom: 15px; font-size: 1.1rem; transition: color 0.3s; }
+        .contact-link:hover { color: var(--color-gold); }
+        .icon { width: 24px; height: 24px; fill: currentColor; }
+        .svg-defs { display: none; }
+        
+        @media (max-width: 768px) { .contacts-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <!-- SVG ШАБЛОНЫ -->
+    <svg class="svg-defs">
+        <symbol id="icon-tg" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.686c.223-.195-.054-.285-.346-.094l-6.4 4.02-2.76-.86c-.6-.185-.61-.6.125-.89l10.736-4.135c.5-.186.94.11.725.99z"/></symbol>
+        <symbol id="icon-wa" viewBox="0 0 24 24"><path d="M12.031 0C5.383 0 0 5.383 0 12.031c0 2.124.553 4.195 1.604 6.015L.51 24l6.14-1.61c1.76.954 3.74 1.456 5.78 1.456 6.648 0 12.031-5.383 12.031-12.031C24.462 5.383 19.079 0 12.031 0zm6.534 17.15c-.276.776-1.59 1.45-2.19 1.51-.55.055-1.25.138-3.52-.75-2.73-1.06-4.5-3.85-4.64-4.04-.14-.19-1.11-1.48-1.11-2.83 0-1.35.7-2.02.95-2.29.25-.27.55-.34.73-.34.18 0 .37 0 .53.01.18.01.42-.07.65.48.24.57.8 1.96.87 2.12.07.16.12.35.02.54-.1.19-.15.31-.3.48-.15.17-.32.37-.45.5-.15.15-.31.31-.13.62.18.31.8 1.32 1.72 2.14 1.19 1.06 2.18 1.39 2.49 1.54.31.15.49.13.67-.07.18-.2.77-.9.98-1.21.21-.31.42-.26.7-.15.28.11 1.78.84 2.09 1 .31.16.52.24.59.37.07.13.07.77-.2 1.54z"/></symbol>
+        <symbol id="icon-max" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="currentColor"/><path d="M6 16V8h2.5l2.5 4.5L13.5 8H16v8h-2v-4.5l-2 3.5h-1l-2-3.5V16H6z" fill="var(--color-green)"/></symbol>
+    </svg>
+
+    <div class="error-container">
+        <h1>404</h1>
+        <h2>Ой! Страница потерялась...</h2>
+        <p>Но наше свежевыжатое масло всегда на месте! Вернитесь на главную или сделайте заказ напрямую:</p>
+        
+        <a href="site.html" class="btn" style="background: var(--color-gold); color: var(--color-green);">На главную</a>
+
+        <div class="contacts-grid">
+            <div class="contact-col">
+                <div class="contact-name">Александр</div>
+                <a href="tel:+79823224400" class="contact-link">8 (982) 322-44-00</a>
+                <a href="https://t.me/real_erlih" target="_blank" class="contact-link"><svg class="icon"><use href="#icon-tg"></use></svg> Telegram</a>
+                <a href="https://wa.me/qr/EJ7O3QSJL7FPG1" target="_blank" class="contact-link"><svg class="icon"><use href="#icon-wa"></use></svg> WhatsApp</a>
+                <a href="https://max.ru/u/f9LHodD0cOL5n4fe234QL2xQMrjGecNqpb9bwuJ5L8bmoTnjTfb1y-h6qUM" target="_blank" class="contact-link"><svg class="icon"><use href="#icon-max"></use></svg> MAX</a>
+            </div>
+            <div class="contact-col">
+                <div class="contact-name">Ева</div>
+                <a href="tel:+79995875652" class="contact-link">8 (999) 587-56-52</a>
+                <a href="https://t.me/eevaaaqw" target="_blank" class="contact-link"><svg class="icon"><use href="#icon-tg"></use></svg> Telegram</a>
+                <a href="https://wa.me/qr/NBKO3PX4RVEFO1" target="_blank" class="contact-link"><svg class="icon"><use href="#icon-wa"></use></svg> WhatsApp</a>
+                <a href="https://max.ru/u/f9LHodD0cOJXgURAyqws5kVYe4apCZ6Mp55pLtjTCDY6hbgFUGR4Hj7Z9H8" target="_blank" class="contact-link"><svg class="icon"><use href="#icon-max"></use></svg> MAX</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

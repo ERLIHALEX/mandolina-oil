@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МАНДОЛИНА — Премиальное сыродавленное масло</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- ПЕРЕМЕННЫЕ ЦВЕТА И ШРИФТЫ --- */
+        :root {
+            --color-cream: #F9F6F0;
+            --color-beige: #E6DDC4;
+            --color-green: #2C4C3B;
+            --color-gold: #C5A059;
+            --color-gold-hover: #D4AF37;
+            --color-dark: #1A1A1A;
+            --color-white: #FFFFFF;
+            --color-danger: #8B0000;
+
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- БАЗОВЫЕ СТИЛИ --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-cream);
+            color: var(--color-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--color-green);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            background-color: var(--color-beige);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 120px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 60px;
+            color: var(--color-green);
+        }
+
+        /* --- АНИМАЦИИ ПОЯВЛЕНИЯ --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- КНОПКИ --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background-color: transparent;
+            border: 1px solid var(--color-gold);
+            color: var(--color-gold);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--color-gold);
+            color: var(--color-white);
+        }
+
+        .btn-solid {
+            background-color: var(--color-green);
+            border-color: var(--color-green);
+            color: var(--color-white);
+        }
+
+        .btn-solid:hover {
+            background-color: var(--color-gold);
+            border-color: var(--color-gold);
+        }
+
+        /* --- ШАПКА --- */
+        header {
+            background-color: rgba(249, 246, 240, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        /* --- ЗАДАЧА 1: Умная шапка (Плавность и скрытие) --- */
+        header {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .header-hidden {
+            transform: translateY(-100%);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--color-green);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Обновленные стили для правой части шапки */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .header-btn {
+            padding: 12px 25px;
+            font-size: 0.8rem;
+        }
+
+        .contacts {
+            display: flex;
+            gap: 40px;
+        }
+
+        .contact-person {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.85rem;
+        }
+
+        .contact-name {
+            font-weight: 600;
+            color: var(--color-gold);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-links {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-links a:hover {
+            color: var(--color-gold);
+            transform: scale(1.1);
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: var(--transition);
+        }
+
+        .svg-defs {
+            display: none;
+        }
+
+        /* --- ГЛАВНЫЙ ЭКРАН (ОБНОВЛЕНО ДЛЯ ВИДЕО) --- */
+        .hero {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--color-white);
+            padding: 0;
+            margin-top: -80px;
+            padding-top: 80px;
+            overflow: hidden;
+            background-color: var(--color-dark);
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(44, 76, 59, 0.7), rgba(26, 26, 26, 0.8));
+            z-index: 2;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            color: var(--color-white);
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            color: var(--color-beige);
+        }
+
+        /* --- ИСТОРИЯ --- */
+        .history-section {
+            padding: 0;
+            background-color: var(--color-dark);
+            color: var(--color-cream);
+            position: relative;
+        }
+
+        .history-container {
+            display: flex;
+            align-items: flex-start;
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .history-text-col {
+            width: 50%;
+            padding: 10vh 5% 10vh 10%;
+        }
+
+        .history-step {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .history-step h3 {
+            font-size: 3rem;
+            color: var(--color-gold);
+            margin-bottom: 25px;
+        }
+
+        .history-step p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #ddd;
+        }
+
+        .history-img-col {
+            width: 50%;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            overflow: hidden;
+        }
+
+        .history-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transform: scale(1.1);
+            transition: opacity 1s ease, transform 2s ease;
+        }
+
+        .history-img.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* --- ВИДЕО БЛОК --- */
+        .video-section {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .video-section video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 26, 26, 0.6);
+            z-index: 2;
+        }
+
+        .video-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .video-content h2 {
+            font-size: 4rem;
+            color: var(--color-gold);
+            margin-bottom: 20px;
+        }
+
+        .video-content p {
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* --- ТЕХНОЛОГИЯ --- */
+        .technology {
+            background-color: var(--color-cream);
+        }
+
+        .tech-visual-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .tech-card {
+            background: var(--color-white);
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+
+        .tech-card h4 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .tech-bad h4 {
+            color: #555;
+        }
+
+        .tech-good h4 {
+            color: var(--color-green);
+        }
+
+        .tech-card p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .highlight-box {
+            background-color: var(--color-white);
+            padding: 50px;
+            border: 1px solid var(--color-gold);
+            margin: 40px auto;
+            max-width: 900px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+            position: relative;
+            font-size: 1.2rem;
+        }
+
+        /* --- ЗАДАЧА 3: Автоматическая высота рамки --- */
+        .highlight-box {
+            height: auto !important;
+        }
+
+        .highlight-box::before {
+            content: '✦';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-cream);
+            padding: 0 10px;
+            color: var(--color-gold);
+            font-size: 1.5rem;
+        }
+
+        .highlight-box strong {
+            color: var(--color-green);
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+        }
+
+        .custom-order {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .custom-order p {
+            font-style: italic;
+            color: var(--color-gold);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- ИНТЕРАКТИВНЫЙ СЛАЙДЕР ЭТИКЕТОК --- */
+        .label-slider-section {
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .label-slider-section .section-title {
+            color: var(--color-gold);
+        }
+
+        .comparison-slider {
+            position: relative;
+            max-width: 400px;
+            /* Ограничиваем ширину для вертикальной этикетки */
+            margin: 0 auto;
+            aspect-ratio: 2/3;
+            /* Вертикальные пропорции */
+            overflow: hidden;
+            border: 2px solid var(--color-gold);
+            border-radius: 8px;
+            cursor: ew-resize;
+            touch-action: pan-y;
+            /* Разрешаем скролл страницы вверх-вниз на мобилках */
+        }
+
+        .comparison-slider img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+            /* Чтобы картинки не перехватывали события мыши */
+        }
+
+        .img-new-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+            /* Обрезаем правую часть */
+            pointer-events: none;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 100%;
+            background: var(--color-gold);
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .slider-handle::after {
+            content: '⟷';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: var(--color-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- ТОВАРЫ (3D FLIP CARDS) --- */
+        .products {
+            background-color: var(--color-beige);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            height: 650px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: var(--color-white);
+            padding: 40px;
+            border: 1px solid transparent;
+            box-shadow: 0 20px 50px rgba(44, 76, 59, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+            border-color: var(--color-gold);
+            background: var(--color-cream);
+        }
+
+        .premium-badge {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background-color: var(--color-gold);
+            color: var(--color-white);
+            padding: 8px 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 2;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--color-gold);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .product-desc {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* --- ПРАВИЛА ИСПОЛЬЗОВАНИЯ --- */
+        .rules-section {
+            background-color: var(--color-cream);
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .rule-card {
+            background: var(--color-white);
+            padding: 40px;
+            border-top: 4px solid var(--color-gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            text-align: left;
+        }
+
+        .rule-card h4 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--color-green);
+        }
+
+        .rule-card p,
+        .rule-card ul {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        .rule-card ul {
+            padding-left: 20px;
+        }
+
+        .rule-card li {
+            margin-bottom: 8px;
+        }
+
+        .danger-text {
+            color: var(--color-danger);
+            font-weight: 600;
+        }
+
+        .highlight-text {
+            color: var(--color-green);
+            font-weight: 600;
+        }
+
+        /* --- РЕЦЕПТЫ --- */
+        .recipes {
+            background-color: var(--color-beige);
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .recipe-card {
+            position: relative;
+            height: 400px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .recipe-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .recipe-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(26, 26, 26, 0.9), rgba(44, 76, 59, 0.2));
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 30px 20px;
+            transition: var(--transition);
+        }
+
+        .recipe-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .recipe-card:hover .recipe-overlay {
+            background: linear-gradient(to top, rgba(26, 26, 26, 0.95), rgba(197, 160, 89, 0.6));
+        }
+
+        .recipe-title {
+            color: var(--color-white);
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .recipe-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background-color: var(--color-gold);
+            transition: width 0.3s ease;
+        }
+
+        .recipe-card:hover .recipe-title::after {
+            width: 100%;
+        }
+
+        /* --- СЕРТИФИКАТЫ --- */
+        .certificates {
+            background-color: var(--color-cream);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .cert-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 5px solid var(--color-white);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .cert-img:hover {
+            transform: scale(1.03);
+            border-color: var(--color-gold);
+        }
+
+        /* --- FAQ --- */
+        .faq {
+            background-color: var(--color-beige);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--color-gold);
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 20px 0;
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--color-green);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 2rem;
+            color: var(--color-gold);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-answer p {
+            padding-bottom: 20px;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        /* --- ОТЗЫВЫ --- */
+        .testimonials {
+            background-color: var(--color-cream);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--color-white);
+            padding: 40px 30px;
+            border-top: 4px solid var(--color-gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            text-align: left;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .stars {
+            color: var(--color-gold);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* --- СОТРУДНИЧЕСТВО B2B --- */
+        .b2b-section {
+            background-color: var(--color-green);
+            color: var(--color-white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .b2b-section .section-title {
+            color: var(--color-gold);
+            margin-bottom: 30px;
+        }
+
+        .b2b-text {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--color-beige);
+        }
+
+        .b2b-email {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--color-gold);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .b2b-email:hover {
+            color: var(--color-white);
+            transform: scale(1.05);
+        }
+
+        /* --- ПОДВАЛ --- */
+        footer {
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--color-gold);
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        .footer-info {
+            margin-bottom: 40px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .footer-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 40px;
+        }
+
+        /* --- МОДАЛЬНЫЕ ОКНА --- */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--color-cream);
+            padding: 60px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            border: 1px solid var(--color-gold);
+            text-align: center;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: var(--color-green);
+            line-height: 1;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--color-gold);
+        }
+
+        #imageModal .modal-content {
+            padding: 10px;
+            background: transparent;
+            border: none;
+            max-width: 800px;
+        }
+
+        #imageModal img {
+            width: 100%;
+            height: auto;
+            border: 2px solid var(--color-gold);
+        }
+
+        #imageModal .close-modal {
+            color: var(--color-white);
+            top: -40px;
+            right: 0;
+        }
+
+        /* Модалка Заказа */
+        #orderModal .modal-content {
+            max-width: 700px;
+            padding: 50px;
+        }
+
+        .order-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .order-col {
+            background: var(--color-white);
+            padding: 30px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .order-col h4 {
+            font-size: 1.8rem;
+            color: var(--color-gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .order-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: var(--color-cream);
+            border: 1px solid var(--color-green);
+            color: var(--color-green);
+            font-weight: 500;
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+
+        .order-btn:hover {
+            background: var(--color-green);
+            color: var(--color-white);
+        }
+
+        /* --- MOBILE FAB --- */
+        .fab-container {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1500;
+        }
+
+        .fab-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--color-gold);
+            color: var(--color-white);
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .fab-btn:active {
+            transform: scale(0.9);
+        }
+
+        /* --- НОВЫЕ СТИЛИ (СТАТУС ОТЖИМА, ПОДПИСКА, ЛИД-МАГНИТ) --- */
+        .pressing-status {
+            background: var(--color-white);
+            border: 1px solid var(--color-gold);
+            padding: 15px 30px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin: 0 auto 40px;
+            color: var(--color-green);
+            font-weight: 500;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .pressing-status .icon {
+            fill: var(--color-gold);
+            width: 24px;
+            height: 24px;
+        }
+
+        .subscription-section {
+            background-color: var(--color-green);
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .subscription-section .section-title {
+            color: var(--color-gold);
+            margin-bottom: 20px;
+        }
+
+        .subscription-text {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--color-beige);
+        }
+
+        .lead-magnet {
+            background: var(--color-white);
+            border: 2px dashed var(--color-gold);
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .lead-magnet h3 {
+            font-size: 2rem;
+            color: var(--color-green);
+            margin-bottom: 15px;
+        }
+
+        .lead-magnet p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        /* --- АДАПТИВНОСТЬ --- */
+        @media (max-width: 992px) {
+
+            .products-grid,
+            .rules-grid,
+            .tech-visual-compare {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .recipe-grid,
+            .cert-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .history-container {
+                flex-direction: column;
+            }
+
+            .history-img-col {
+                display: none;
+            }
+
+            /* --- ЗАДАЧА 2: Линейная верстка картинок истории --- */
+            .history-step .history-img {
+                position: relative;
+                opacity: 1;
+                transform: none;
+                width: 100%;
+                height: auto;
+                border-radius: 12px;
+                margin-bottom: 20px;
+                display: block;
+            }
+
+            .history-text-col {
+                width: 100%;
+                padding: 0 20px;
+            }
+
+            .history-step {
+                min-height: auto;
+                padding: 40px 0;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .header-right {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .products-grid,
+            .rules-grid,
+            .recipe-grid,
+            .tech-visual-compare,
+            .cert-grid,
+            .order-columns,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .b2b-email {
+                font-size: 1.8rem;
+            }
+
+            .footer-contacts {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .fab-container {
+                display: block;
+            }
+
+            .pressing-status {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            /* --- ЗАДАЧА 3: Исправление вылезающего текста (Overflow) --- */
+            h1,
+            h2,
+            h3,
+            h4,
+            strong,
+            .highlight-box,
+            .highlight-text {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                -webkit-hyphens: auto;
+                hyphens: auto;
+            }
+
+            .highlight-box {
+                padding: 25px 15px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SVG ШАБЛОНЫ (TG, WA, MAX) -->
+    <svg class="svg-defs">
+        <symbol id="icon-tg" viewBox="0 0 24 24">
+            <path
+                d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.686c.223-.195-.054-.285-.346-.094l-6.4 4.02-2.76-.86c-.6-.185-.61-.6.125-.89l10.736-4.135c.5-.186.94.11.725.99z" />
+        </symbol>
+        <symbol id="icon-wa" viewBox="0 0 24 24">
+            <path
+                d="M12.031 0C5.383 0 0 5.383 0 12.031c0 2.124.553 4.195 1.604 6.015L.51 24l6.14-1.61c1.76.954 3.74 1.456 5.78 1.456 6.648 0 12.031-5.383 12.031-12.031C24.462 5.383 19.079 0 12.031 0zm6.534 17.15c-.276.776-1.59 1.45-2.19 1.51-.55.055-1.25.138-3.52-.75-2.73-1.06-4.5-3.85-4.64-4.04-.14-.19-1.11-1.48-1.11-2.83 0-1.35.7-2.02.95-2.29.25-.27.55-.34.73-.34.18 0 .37 0 .53.01.18.01.42-.07.65.48.24.57.8 1.96.87 2.12.07.16.12.35.02.54-.1.19-.15.31-.3.48-.15.17-.32.37-.45.5-.15.15-.31.31-.13.62.18.31.8 1.32 1.72 2.14 1.19 1.06 2.18 1.39 2.49 1.54.31.15.49.13.67-.07.18-.2.77-.9.98-1.21.21-.31.42-.26.7-.15.28.11 1.78.84 2.09 1 .31.16.52.24.59.37.07.13.07.77-.2 1.54z" />
+        </symbol>
+        <symbol id="icon-max" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="12" fill="currentColor" />
+            <path d="M6 16V8h2.5l2.5 4.5L13.5 8H16v8h-2v-4.5l-2 3.5h-1l-2-3.5V16H6z" fill="var(--color-white)" />
+        </symbol>
+    </svg>
+
+    <!-- ШАПКА -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">Мандолина</div>
+            <div class="header-right">
+                <div class="contacts">
+                    <div class="contact-person">
+                        <span class="contact-name">Ева</span>
+                        <div class="contact-links">
+                            <a href="tel:+79995875652">8 (999) 587-56-52</a>
+                            <a href="https://t.me/eevaaaqw" target="_blank" title="Telegram"><svg class="icon">
+                                    <use href="#icon-tg"></use>
+                                </svg></a>
+                            <!-- ДОБАВЛЕН WA ДЛЯ ЕВЫ -->
+                            <a href="https://wa.me/qr/NBKO3PX4RVEFO1" target="_blank" title="WhatsApp"><svg
+                                    class="icon">
+                                    <use href="#icon-wa"></use>
+                                </svg></a>
+                            <a href="https://max.ru/u/f9LHodD0cOJXgURAyqws5kVYe4apCZ6Mp55pLtjTCDY6hbgFUGR4Hj7Z9H8"
+                                target="_blank" title="MAX"><svg class="icon">
+                                    <use href="#icon-max"></use>
+                                </svg></a>
+                        </div>
+                    </div>
+                    <div class="contact-person">
+                        <span class="contact-name">Александр</span>
+                        <div class="contact-links">
+                            <a href="tel:+79823224400">8 (982) 322-44-00</a>
+                            <a href="https://t.me/real_erlih" target="_blank" title="Telegram"><svg class="icon">
+                                    <use href="#icon-tg"></use>
+                                </svg></a>
+                            <a href="https://wa.me/qr/EJ7O3QSJL7FPG1" target="_blank" title="WhatsApp"><svg
+                                    class="icon">
+                                    <use href="#icon-wa"></use>
+                                </svg></a>
+                            <a href="https://max.ru/u/f9LHodD0cOL5n4fe234QL2xQMrjGecNqpb9bwuJ5L8bmoTnjTfb1y-h6qUM"
+                                target="_blank" title="MAX"><svg class="icon">
+                                    <use href="#icon-max"></use>
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-solid header-btn" onclick="openOrderModal()">Сделать заказ</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ГЛАВНЫЙ ЭКРАН (С ВИДЕО-ФОНОМ) -->
+    <section class="hero">
+        <video id="bg-video" autoplay loop muted playsinline class="hero-video">
+            <source src="bg-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container reveal">
+            <h1>Живое масло, созданное без компромиссов</h1>
+            <p>Сыродавленное льняное масло из отборных семян. Давим в Челябинске на уникальном силиконовом прессе.</p>
+            <button class="btn btn-solid" onclick="openOrderModal()">Заказать свежий отжим</button>
+        </div>
+    </section>
+
+    <!-- ИСТОРИЯ -->
+    <section id="history" class="history-section">
+        <div class="history-container">
+            <div class="history-text-col">
+                <div class="history-step reveal" data-index="1">
+                    <h3>Зарождение</h3>
+                    <p>На Руси лён издревле был культурой номер один. Изначально его выращивали для создания прочных
+                        тканей, но вскоре открыли невероятную силу льняного семени. Масло из него называли «жидким
+                        золотом».</p>
+                </div>
+                <div class="history-step reveal" data-index="2">
+                    <h3>Царская Россия</h3>
+                    <p>Льняное масло было основой рациона. Им щедро заправляли каши в пост, добавляли в выпечку для
+                        пышности.</p>
+                </div>
+                <div class="history-step reveal" data-index="3">
+                    <h3>Советский период</h3>
+                    <p>В советское время льняное масло практически исчезло. Наступила эра дешевого рафинированного
+                        подсолнечного масла.</p>
+                </div>
+                <div class="history-step reveal" data-index="4">
+                    <h3>Возрождение</h3>
+                    <p>Мы возвращаемся к истокам. Лён — это генетически родной для нас суперфуд. Мы вернули тот самый,
+                        исторический вкус масла.</p>
+                </div>
+            </div>
+            <div class="history-img-col">
+                <img src="history1.jpg" class="history-img active" id="hist-img-1" alt="Зарождение">
+                <img src="history2.png" class="history-img" id="hist-img-2" alt="Царская Россия">
+                <img src="history3.jpg" class="history-img" id="hist-img-3" alt="Советский период">
+                <img src="history4.jpg" class="history-img" id="hist-img-4" alt="Возрождение">
+            </div>
+        </div>
+    </section>
+
+    <!-- КАК МЫ ЭТО ДЕЛАЕМ (ВИДЕО) -->
+    <!--   <section class="video-section"> 
+        <video src="process.mp4" autoplay loop muted playsinline></video>
+        <div class="video-overlay"></div>
+        <div class="video-content reveal">
+            <h2>Магия сыродавления</h2>
+            <p>Посмотрите, как рождается каждая капля живого масла на нашем производстве.</p>
+        </div>
+    </section>
+-->
+    <!-- ТЕХНОЛОГИЯ -->
+    <section class="technology">
+        <div class="container">
+            <h2 class="section-title reveal">Почему наш метод — лучший</h2>
+
+            <div class="tech-visual-compare reveal">
+                <div class="tech-card tech-bad">
+                    <img src="shnek.jpg" alt="Шнековый отжим">
+                    <h4>Шнековый отжим (Металл)</h4>
+                    <p>Металл окисляет масло, а трение шнека нагревает семена, убивая витамины и Омега-3. Масло быстро
+                        горкнет.</p>
+                </div>
+                <div class="tech-card tech-good">
+                    <img src="press.jpeg" alt="Силиконовый пресс">
+                    <h4>Наш силиконовый пресс</h4>
+                    <p>Бережное давление без нагрева. Никакого контакта с металлом. 100% сохранение пользы и идеальный
+                        вкус.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box reveal">
+                <p>В отличие от шнекового отжима, мы используем метод бережного сыродавления. Наше главное отличие —
+                    пресс из <strong>ВЫСОКОКАЧЕСТВЕННОГО СИЛИКОНА</strong>.</p>
+            </div>
+
+            <div class="custom-order reveal">
+                <p>Готовы давить под ваш индивидуальный заказ любые семена — от горчичного до рыжикового.</p>
+                <button class="btn" onclick="openOrderModal()">Связаться с нами</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЛАЙДЕР ЭТИКЕТОК -->
+    <section class="label-slider-section">
+        <div class="container">
+            <h2 class="section-title reveal">Встречайте наш новый дизайн</h2>
+            <p style="margin-bottom: 40px; font-size: 1.2rem;" class="reveal">Потяните ползунок вправо, чтобы увидеть
+                преображение.</p>
+
+            <div class="comparison-slider reveal" id="compSlider">
+                <img src="mandolina_st.jpg" alt="Старый дизайн этикетки">
+                <div class="img-new-wrapper" id="imgWrapper">
+                    <img src="mandolina_b.jpg" alt="Новый дизайн этикетки">
+                </div>
+                <div class="slider-handle" id="sliderHandle"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ТОВАРЫ (3D FLIP) -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title reveal">Виды масел</h2>
+
+            <!-- СТАТУС ОТЖИМА (НОВОЕ) -->
+            <div style="text-align: center;">
+                <div class="pressing-status reveal" id="pressingStatus">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M12 2c-5.33 4.55-8 8.48-8 11.8a8 8 0 0 0 16 0c0-3.32-2.67-7.25-8-11.8z" />
+                    </svg>
+                    <span id="pressingText">Ближайший отжим: ... Свободно для предзаказа: ...</span>
+                </div>
+            </div>
+
+            <div class="products-grid">
+
+                <!-- Товар 1 -->
+                <div class="flip-card reveal">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div>
+                                <img src="maslo.jpg" alt="Бурое семя" class="product-img">
+                                <h3 class="product-title">Бурое семя</h3>
+                                <div class="product-price">550 руб.</div>
+                                <p class="product-desc">«Классика с глубоким, многогранным характером. Яркие древесные и
+                                    злаковые ноты...»</p>
+                            </div>
+                            <div style="display: flex; gap: 10px; justify-content: center;">
+                                <button class="btn btn-solid" onclick="toggleFlip(this)">Этикетка</button>
+                                <button class="btn" onclick="openOrderModal()">Заказать</button>
+                            </div>
+                        </div>
+                        <!-- ИЗМЕНЕННАЯ ОБРАТНАЯ СТОРОНА -->
+                        <div class="flip-card-back">
+                            <img src="oborotka_b.jpg" alt="Этикетка Бурое семя"
+                                style="width: 100%; height: 100%; object-fit: contain; margin-bottom: 20px;">
+                            <button class="btn" onclick="toggleFlip(this)">Назад к описанию</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 2 -->
+                <div class="flip-card reveal">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="premium-badge">Премиум</div>
+                            <div>
+                                <img src="maslo1.jpg" alt="Белое семя" class="product-img">
+                                <h3 class="product-title">Белое семя</h3>
+                                <div class="product-price">650 руб.</div>
+                                <p class="product-desc">«Гастрономический шедевр. Удивительно нежная, шелковистая
+                                    текстура и сладковатый вкус...»</p>
+                            </div>
+                            <div style="display: flex; gap: 10px; justify-content: center;">
+                                <button class="btn btn-solid" onclick="toggleFlip(this)">Этикетка</button>
+                                <button class="btn" onclick="openOrderModal()">Заказать</button>
+                            </div>
+                        </div>
+                        <!-- ИЗМЕНЕННАЯ ОБРАТНАЯ СТОРОНА -->
+                        <div class="flip-card-back">
+                            <img src="oborotka_w.jpg" alt="Этикетка Белое семя"
+                                style="width: 100%; height: 100%; object-fit: contain; margin-bottom: 20px;">
+                            <button class="btn" onclick="toggleFlip(this)">Назад к описанию</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРАВИЛА ИСПОЛЬЗОВАНИЯ -->
+    <section class="rules-section">
+        <div class="container">
+            <h2 class="section-title reveal">Правила использования</h2>
+            <div class="rules-grid reveal">
+
+                <!-- Блок 1: Продукт и Ценность -->
+                <div class="rule-card">
+                    <h4><svg class="icon" style="width:30px;height:30px;">
+                            <use href="#icon-max"></use>
+                        </svg> О продукте</h4>
+                    <p><span class="highlight-text">100% нерафинированное льняное масло</span> первого холодного отжима.
+                    </p>
+                    <p><strong>Пищевая ценность (на 100г):</strong></p>
+                    <ul>
+                        <li>Жиры - 99,8 г (из них Омега-3 до 60%)</li>
+                        <li>Белки - 0 г, Углеводы - 0 г</li>
+                        <li>Энергетическая ценность: 898 ккал / 3760 кДж</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #888;">Стандарты: ГОСТ
+                        35012-2023<br>Производитель: ИП Эрлих Г.В., Челябинская обл.</p>
+                </div>
+
+                <!-- Блок 2: Применение и Хранение -->
+                <div class="rule-card">
+                    <h4><svg class="icon" style="width:30px;height:30px;fill:var(--color-gold)">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.53 13.11l-1.41 1.41-3.12-3.12-3.12 3.12-1.41-1.41 3.12-3.12-3.12-3.12 1.41-1.41 3.12 3.12 3.12-3.12 1.41 1.41-3.12 3.12 3.12 3.12z" />
+                        </svg> Применение и Хранение</h4>
+                    <p>Идеально для салатов, каш, холодных блюд.</p>
+                    <p class="danger-text">СТРОГО НЕ РЕКОМЕНДУЕТСЯ использовать для жарки и тепловой обработки!</p>
+                    <hr style="border:0; border-top:1px dashed #ccc; margin: 15px 0;">
+                    <p><strong>Хранение:</strong> В плотно закрытой темной бутылке (+5 °C ... +20 °C).</p>
+                    <p><span class="highlight-text">ПОСЛЕ ВСКРЫТИЯ</span> хранить только в холодильнике и употребить в
+                        течение 60 дней.</p>
+                    <p>Срок годности закрытой бутылки: 6 месяцев. Допускается естественный осадок.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- РЕЦЕПТЫ -->
+    <section class="recipes">
+        <div class="container">
+            <h2 class="section-title reveal">Как использовать</h2>
+            <div class="recipe-grid reveal">
+                <div class="recipe-card"
+                    onclick="openModal('Старорусский винегрет', 'С квашеной капустой. Льняное масло идеально свяжет кислотность капусты и сладость свеклы.')">
+                    <img src="vinegret.webp" alt="Салат">
+                    <div class="recipe-overlay">
+                        <h3 class="recipe-title">Салат</h3>
+                    </div>
+                </div>
+                <div class="recipe-card"
+                    onclick="openModal('Маринад для дичи', 'Смешайте масло, раздавленную клюкву, чеснок и можжевельник.')">
+                    <img src="maso.jpg" alt="Маринад">
+                    <div class="recipe-overlay">
+                        <h3 class="recipe-title">Маринад</h3>
+                    </div>
+                </div>
+                <div class="recipe-card"
+                    onclick="openModal('Томленая полба', 'Добавьте масло перед подачей для сливочно-орехового вкуса.')">
+                    <img src="kasha.webp" alt="Каша">
+                    <div class="recipe-overlay">
+                        <h3 class="recipe-title">Каша</h3>
+                    </div>
+                </div>
+                <div class="recipe-card"
+                    onclick="openModal('Ржаные калитки', 'Добавьте ложку льняного масла в тесто при замесе.')">
+                    <img src="kalitki.jpeg" alt="Выпечка">
+                    <div class="recipe-overlay">
+                        <h3 class="recipe-title">Выпечка</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ЛИД-МАГНИТ (НОВОЕ) -->
+            <!--            <div class="lead-magnet reveal">
+                <h3>Скачать сборник старорусских рецептов с льняным маслом</h3>
+                <p>Узнайте, как раскрыть вкус привычных блюд с помощью живого масла.</p>
+                <button class="btn btn-solid" onclick="openOrderModal('recipe')">Получить PDF</button>
+            </div>
+        </div>
+    </section>
+-->
+            <!-- СЕРТИФИКАТЫ -->
+            <section class="certificates">
+                <div class="container">
+                    <h2 class="section-title reveal">Качество по ГОСТ</h2>
+                    <div class="cert-grid reveal">
+                        <img src="sertificate.jpg" alt="Сертификат 1" class="cert-img"
+                            onclick="openImageModal(this.src)">
+                    </div>
+                </div>
+            </section>
+
+            <!-- МАСЛЯНАЯ ПОДПИСКА (НОВОЕ) -->
+            <section class="subscription-section">
+                <div class="container reveal">
+                    <h2 class="section-title">Свежее масло каждый месяц без напоминаний</h2>
+                    <p class="subscription-text">Настоящее сыродавленное масло хранится в холодильнике не более 60 дней.
+                        Оформите подписку, и мы будем отжимать и отправлять вам свежую бутылочку МАНДОЛИНЫ ровно по
+                        вашему
+                        графику.</p>
+                    <button class="btn btn-solid" onclick="openOrderModal('subscription')">Узнать о подписке</button>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="faq">
+                <div class="container">
+                    <h2 class="section-title reveal">Частые вопросы</h2>
+                    <div class="faq-container reveal">
+                        <div class="faq-item">
+                            <button class="faq-question">Почему ваше масло дороже магазинного?</button>
+                            <div class="faq-answer">
+                                <p>Магазинное масло производится методом горячего отжима или экстракции химическими
+                                    растворителями, что позволяет выжать из семечки 100% жидкости, но убивает всю
+                                    пользу. Мы
+                                    используем бережное сыродавление на силиконовом прессе. Выход масла меньше, процесс
+                                    дольше,
+                                    но вы получаете 100% живой, целебный продукт.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Горчит ли льняное масло?</button>
+                            <div class="faq-answer">
+                                <p>Настоящее, свежее сыродавленное льняное масло НЕ горчит. Горечь — это признак
+                                    окисления
+                                    (контакта с металлом или воздухом) и испорченности продукта. Наше масло имеет
+                                    мягкий,
+                                    сладковато-ореховый вкус.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Можно ли давать детям?</button>
+                            <div class="faq-answer">
+                                <p>Да, льняное масло невероятно полезно для растущего организма, так как содержит
+                                    рекордное
+                                    количество Омега-3, необходимой для развития мозга. Рекомендуем начинать с
+                                    нескольких
+                                    капель, добавляя в теплые каши или овощные пюре.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question">Как быстро вы отправляете заказ?</button>
+                            <div class="faq-answer">
+                                <p>Мы не храним масло на складе. Мы давим его строго под ваш заказ. Обычно процесс
+                                    отжима и
+                                    отправки занимает 1-2 дня. Вы получаете максимально свежий продукт.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ОТЗЫВЫ ЦЕНИТЕЛЕЙ -->
+            <section class="testimonials">
+                <div class="container">
+                    <h2 class="section-title reveal">Отзывы ценителей</h2>
+                    <div class="testimonials-grid reveal">
+                        <div class="testimonial-card">
+                            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <p class="testimonial-text">"Первый раз пробую льняное масло, которое ВООБЩЕ не горчит!
+                                Очень нежный
+                                вкус, добавляю в утреннюю кашу. Спасибо Александру за быструю доставку!"</p>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <p class="testimonial-text">"Брала белое семя премиум. Это просто восторг, текстура
+                                шелковистая,
+                                пахнет кедровыми орешками. Буду заказывать еще."</p>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <p class="testimonial-text">"Видно, что ребята горят своим делом. Масло свежайшее, отжали
+                                прямо под
+                                мой заказ. Упаковка топ, для подарка самое то."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- СОТРУДНИЧЕСТВО B2B -->
+            <section class="b2b-section">
+                <div class="container reveal">
+                    <h2 class="section-title">Сотрудничество</h2>
+                    <p class="b2b-text">Мы открыты к сотрудничеству с ресторанами, магазинами здорового питания и
+                        оптовыми
+                        покупателями.</p>
+                    <p>По вопросам сотрудничества пишите на:</p>
+                    <a href="mailto:mando.lina@bk.ru" class="b2b-email">mando.lina@bk.ru</a>
+                </div>
+            </section>
+
+            <!-- ПОДВАЛ -->
+            <footer>
+                <div class="container">
+                    <div class="footer-logo">МАНДОЛИНА</div>
+                    <div class="footer-info">
+                        <p>г. Челябинск, ул. Белорецкая, 60А</p>
+                    </div>
+                    <div class="footer-contacts">
+                        <div>
+                            <p style="color: var(--color-gold); font-weight: 600; margin-bottom: 5px;">Ева</p>
+                            <p style="margin-bottom: 10px;">8 (999) 587-56-52</p>
+                            <div class="contact-links" style="justify-content: center;">
+                                <a href="https://t.me/eevaaaqw" target="_blank" title="Telegram"><svg class="icon">
+                                        <use href="#icon-tg"></use>
+                                    </svg></a>
+                                <!-- ДОБАВЛЕН WA ДЛЯ ЕВЫ -->
+                                <a href="https://wa.me/qr/NBKO3PX4RVEFO1" target="_blank" title="WhatsApp"><svg
+                                        class="icon">
+                                        <use href="#icon-wa"></use>
+                                    </svg></a>
+                                <a href="https://max.ru/u/f9LHodD0cOJXgURAyqws5kVYe4apCZ6Mp55pLtjTCDY6hbgFUGR4Hj7Z9H8"
+                                    target="_blank" title="MAX"><svg class="icon">
+                                        <use href="#icon-max"></use>
+                                    </svg></a>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="color: var(--color-gold); font-weight: 600; margin-bottom: 5px;">Александр</p>
+                            <p style="margin-bottom: 10px;">8 (982) 322-44-00</p>
+                            <div class="contact-links" style="justify-content: center;">
+                                <a href="https://t.me/real_erlih" target="_blank" title="Telegram"><svg class="icon">
+                                        <use href="#icon-tg"></use>
+                                    </svg></a>
+                                <a href="https://wa.me/qr/EJ7O3QSJL7FPG1" target="_blank" title="WhatsApp"><svg
+                                        class="icon">
+                                        <use href="#icon-wa"></use>
+                                    </svg></a>
+                                <a href="https://max.ru/u/f9LHodD0cOL5n4fe234QL2xQMrjGecNqpb9bwuJ5L8bmoTnjTfb1y-h6qUM"
+                                    target="_blank" title="MAX"><svg class="icon">
+                                        <use href="#icon-max"></use>
+                                    </svg></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- ГЛОБАЛЬНОЕ МОДАЛЬНОЕ ОКНО ЗАКАЗА -->
+            <div class="modal" id="orderModal">
+                <div class="modal-content">
+                    <span class="close-modal" onclick="closeModal('orderModal')">&times;</span>
+                    <h3 style="font-size: 2.2rem; color: var(--color-green); margin-bottom: 10px;">Связь с нами</h3>
+                    <!-- ДИНАМИЧЕСКИЙ ТЕКСТ -->
+                    <p id="order-modal-text" style="font-size: 1.1rem; color: #555;">Выберите, кому из нас написать для
+                        оформления заказа:</p>
+
+                    <div class="order-columns">
+                        <div class="order-col">
+                            <h4>Александр</h4>
+                            <a href="https://t.me/real_erlih" target="_blank" class="order-btn"><svg class="icon">
+                                    <use href="#icon-tg"></use>
+                                </svg> Telegram</a>
+                            <a href="https://wa.me/qr/EJ7O3QSJL7FPG1" target="_blank" class="order-btn"><svg
+                                    class="icon">
+                                    <use href="#icon-wa"></use>
+                                </svg> WhatsApp</a>
+                            <a href="https://max.ru/u/f9LHodD0cOL5n4fe234QL2xQMrjGecNqpb9bwuJ5L8bmoTnjTfb1y-h6qUM"
+                                target="_blank" class="order-btn"><svg class="icon">
+                                    <use href="#icon-max"></use>
+                                </svg> MAX</a>
+                        </div>
+                        <div class="order-col">
+                            <h4>Ева</h4>
+                            <a href="https://t.me/eevaaaqw" target="_blank" class="order-btn"><svg class="icon">
+                                    <use href="#icon-tg"></use>
+                                </svg> Telegram</a>
+                            <!-- ДОБАВЛЕН WA ДЛЯ ЕВЫ -->
+                            <a href="https://wa.me/qr/NBKO3PX4RVEFO1" target="_blank" class="order-btn"><svg
+                                    class="icon">
+                                    <use href="#icon-wa"></use>
+                                </svg> WhatsApp</a>
+                            <a href="https://max.ru/u/f9LHodD0cOJXgURAyqws5kVYe4apCZ6Mp55pLtjTCDY6hbgFUGR4Hj7Z9H8"
+                                target="_blank" class="order-btn"><svg class="icon">
+                                    <use href="#icon-max"></use>
+                                </svg> MAX</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- МОДАЛКА РЕЦЕПТОВ -->
+            <div class="modal" id="recipeModal">
+                <div class="modal-content">
+                    <span class="close-modal" onclick="closeModal('recipeModal')">&times;</span>
+                    <h3 id="modal-title">Название</h3>
+                    <p id="modal-text">Описание</p>
+                </div>
+            </div>
+
+            <!-- МОДАЛКА КАРТИНОК (СЕРТИФИКАТЫ) -->
+            <div class="modal" id="imageModal">
+                <div class="modal-content">
+                    <span class="close-modal" onclick="closeModal('imageModal')">&times;</span>
+                    <img id="modal-image-src" src="" alt="Увеличенное изображение">
+                </div>
+            </div>
+
+            <!-- MOBILE FAB (ПЛАВАЮЩАЯ КНОПКА) -->
+            <div class="fab-container">
+                <button class="fab-btn" onclick="openOrderModal()">
+                    <svg viewBox="0 0 24 24" style="width: 30px; height: 30px; fill: currentColor;">
+                        <path
+                            d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- СКРИПТЫ -->
+            <script>
+                // Плавная прокрутка
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                    });
+                });
+
+                // Модалки (Обновлено для динамического текста)
+                function openOrderModal(type = 'order') {
+                    const modalText = document.getElementById('order-modal-text');
+                    if (type === 'recipe') {
+                        modalText.textContent = "Напишите нам в любой мессенджер слово РЕЦЕПТ, и мы пришлем вам книгу!";
+                    } else if (type === 'subscription') {
+                        modalText.textContent = "Напишите нам, чтобы узнать подробности о масляной подписке:";
+                    } else {
+                        modalText.textContent = "Выберите, кому из нас написать для оформления заказа:";
+                    }
+                    document.getElementById('orderModal').classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function openModal(title, text) {
+                    document.getElementById('modal-title').textContent = title;
+                    document.getElementById('modal-text').textContent = text;
+                    document.getElementById('recipeModal').classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+                function openImageModal(src) {
+                    document.getElementById('modal-image-src').src = src;
+                    document.getElementById('imageModal').classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+                function closeModal(id) {
+                    document.getElementById(id).classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.addEventListener('click', function (e) { if (e.target === this) closeModal(this.id); });
+                });
+
+                // Scroll Reveal
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+                }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+                document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+                // Sticky Scroll История
+                const historyObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const index = entry.target.getAttribute('data-index');
+                            document.querySelectorAll('.history-img').forEach(img => img.classList.remove('active'));
+                            const activeImg = document.getElementById(`hist-img-${index}`);
+                            if (activeImg) activeImg.classList.add('active');
+                        }
+                    });
+                }, { root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+                document.querySelectorAll('.history-step').forEach(step => historyObserver.observe(step));
+
+                // FAQ Аккордеон
+                document.querySelectorAll('.faq-question').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const faqItem = button.parentElement;
+                        const answer = button.nextElementSibling;
+                        const isActive = faqItem.classList.contains('active');
+
+                        document.querySelectorAll('.faq-item').forEach(item => {
+                            item.classList.remove('active');
+                            item.querySelector('.faq-answer').style.maxHeight = null;
+                        });
+
+                        if (!isActive) {
+                            faqItem.classList.add('active');
+                            answer.style.maxHeight = answer.scrollHeight + "px";
+                        }
+                    });
+                });
+
+                // 3D Flip Карточек
+                function toggleFlip(btn) {
+                    const card = btn.closest('.flip-card');
+                    card.classList.toggle('flipped');
+                }
+
+                // Слайдер Этикеток
+                // Слайдер Этикеток (Hover & Touch)
+                const compSlider = document.getElementById('compSlider');
+                const imgWrapper = document.getElementById('imgWrapper');
+                const sliderHandle = document.getElementById('sliderHandle');
+
+                if (compSlider && imgWrapper && sliderHandle) {
+                    const moveSlider = (e) => {
+                        // Получаем координаты контейнера
+                        const rect = compSlider.getBoundingClientRect();
+
+                        // Определяем позицию курсора или пальца по оси X
+                        let x = e.type.includes('touch') ? e.touches[0].clientX - rect.left : e.clientX - rect.left;
+
+                        // Ограничиваем выход ползунка за пределы картинки
+                        x = Math.max(0, Math.min(x, rect.width));
+
+                        // Вычисляем процент
+                        const percent = (x / rect.width) * 100;
+
+                        // Применяем маску (clip-path) и двигаем ползунок
+                        imgWrapper.style.clipPath = `polygon(0 0, ${percent}% 0, ${percent}% 100%, 0 100%)`;
+                        sliderHandle.style.left = `${percent}%`;
+                    };
+
+                    // Событие для десктопа (движение мыши)
+                    compSlider.addEventListener('mousemove', moveSlider);
+
+                    // События для мобильных устройств (касание и свайп)
+                    compSlider.addEventListener('touchstart', moveSlider, { passive: true });
+                    compSlider.addEventListener('touchmove', (e) => {
+                        e.preventDefault(); // Запрещаем скролл страницы, пока тянем ползунок
+                        moveSlider(e);
+                    }, { passive: false });
+                }
+
+                // Логика Статуса Отжима (НОВОЕ)
+                document.addEventListener("DOMContentLoaded", function () {
+                    const months = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+                    const tomorrow = new Date();
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    const dateString = tomorrow.getDate() + " " + months[tomorrow.getMonth()];
+
+                    // Случайное число от 4 до 9
+                    const randomBottles = Math.floor(Math.random() * (9 - 4 + 1)) + 4;
+
+                    const pressingText = document.getElementById('pressingText');
+                    if (pressingText) {
+                        pressingText.innerHTML = `Ближайший отжим: <strong>${dateString}</strong>. Свободно для предзаказа: <strong>${randomBottles} бутылочек</strong>.`;
+                    }
+                });
+                /* ==========================================
+                           ЗАДАЧА 1: Умная шапка (Smart Hide Header)
+                           ========================================== */
+                let lastScrollTop = 0;
+                const header = document.querySelector('header');
+
+                window.addEventListener('scroll', () => {
+                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                    if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
+                        header.classList.add('header-hidden'); // Скролл вниз
+                    } else {
+                        header.classList.remove('header-hidden'); // Скролл вверх
+                    }
+                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+                });
+
+                /* ==========================================
+                   ЗАДАЧА 2: Изображения истории на мобильных
+                   ========================================== */
+                function arrangeHistoryImages() {
+                    const isMobile = window.innerWidth <= 992;
+                    const steps = document.querySelectorAll('.history-step');
+                    const imgCol = document.querySelector('.history-img-col');
+
+                    steps.forEach(step => {
+                        const index = step.getAttribute('data-index');
+                        const img = document.getElementById(`hist-img-${index}`);
+
+                        if (isMobile) {
+                            // Переносим картинку внутрь текста на мобильных
+                            if (img && img.parentElement !== step) {
+                                step.insertBefore(img, step.firstChild);
+                            }
+                        } else {
+                            // Возвращаем в правую колонку на ПК
+                            if (img && img.parentElement !== imgCol) {
+                                imgCol.appendChild(img);
+                            }
+                        }
+                    });
+                }
+
+                window.addEventListener('load', arrangeHistoryImages);
+                window.addEventListener('resize', arrangeHistoryImages);
+            </script>
+</body>
+
+</html>
