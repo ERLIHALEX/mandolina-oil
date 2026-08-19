@@ -1376,7 +1376,7 @@
             .a4-img { position: relative; border-left: none; border-bottom: 5px solid #cba365; }
         }
 
-        /* ИСПРАВЛЕНО: Стили для печати рецепта (Форсируем строго 1 страницу А4 Альбомная) */
+/* ИСПРАВЛЕНО: Стили для печати рецепта (Форсируем строго 1 страницу А4 Альбомная) */
         @media print {
             @page {
                 size: A4 landscape;
@@ -1407,27 +1407,31 @@
                 page-break-after: avoid !important;
                 page-break-before: avoid !important;
             }
-            /* --- ИСПРАВЛЕНИЕ СКРОЛЛА РЕЦЕПТОВ ДЛЯ ТЕЛЕФОНОВ --- */
-        .modal {
-            align-items: flex-start; /* Убираем центрирование, спасаем от обрезки */
-            padding: 40px 10px;      /* Отступы от краев экрана телефона */
-            overflow-y: auto;        /* Включаем прокрутку */
-        }
+        } /* <--- ЗДЕСЬ ЗАКАНЧИВАЮТСЯ СТИЛИ ПРИНТЕРА */
 
-        #a4RecipeModal .modal-content {
-            margin: 0 auto;          /* Выравниваем по центру горизонтали */
-        }
-
-        .a4-page {
-            height: auto !important;
-            min-height: unset;
-            overflow: visible !important; 
-        }
-
-        .a4-content {
-            overflow-y: visible !important; /* Убираем внутренний скролл, пусть листается весь экран */
-            padding-bottom: 40px; 
-        }
+        /* ==========================================
+           ЖЕЛЕЗОБЕТОННЫЙ ФИКС СКРОЛЛА РЕЦЕПТОВ НА ТЕЛЕФОНЕ
+           ========================================== */
+        @media (max-width: 768px) {
+            #a4RecipeModal {
+                align-items: flex-start !important; 
+                padding: 20px 10px !important; 
+                overflow-y: auto !important; 
+            }
+            #a4RecipeModal .modal-content {
+                max-height: none !important; 
+                overflow: visible !important;
+                margin: auto;
+            }
+            .a4-page {
+                height: auto !important;
+                min-height: unset !important;
+                overflow: visible !important;
+            }
+            .a4-content {
+                overflow: visible !important;
+                padding-bottom: 30px !important;
+            }
         }
     </style>
 </head>
