@@ -1360,30 +1360,20 @@
                 font-size: 1rem;
             }
 
-            .sub-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .a4-page {
-                flex-direction: column-reverse;
-                aspect-ratio: auto;
-                min-height: 80vh;
-            }
-
-            .a4-img-col {
-                width: 100%;
-                height: 250px;
-            }
-
-            .a4-img {
-                position: relative;
-                border-left: none;
-                border-bottom: 5px solid #cba365;
-            }
-
-            .a4-content {
-                padding: 20px;
-            }
+/* --- ИСПРАВЛЕНИЕ ДЛЯ МОБИЛЬНОГО РЕЦЕПТА --- */
+            .sub-layout { grid-template-columns: 1fr; }
+            
+            /* 1. Чиним кнопки и выносим крестик наверх, чтобы не мешал */
+            .a4-actions { flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
+            .a4-actions .btn { padding: 12px 5px; font-size: 0.7rem; flex: 1; margin: 0 5px; }
+            #a4RecipeModal .close-modal { position: absolute !important; top: -40px !important; right: 0 !important; color: var(--color-white) !important; margin: 0 !important; }
+            
+            /* 2. Включаем правильный скролл для всего рецепта */
+            #a4RecipeModal .modal-content { max-height: 85vh; overflow-y: auto; padding-top: 40px !important; }
+            .a4-page { flex-direction: column-reverse; aspect-ratio: auto; height: auto !important; min-height: auto; overflow: visible !important; }
+            .a4-content { padding: 20px; overflow-y: visible !important; }
+            .a4-img-col { width: 100%; height: 250px; }
+            .a4-img { position: relative; border-left: none; border-bottom: 5px solid #cba365; }
         }
 
         /* ИСПРАВЛЕНО: Стили для печати рецепта (Форсируем строго 1 страницу А4 Альбомная) */
