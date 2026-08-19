@@ -1360,23 +1360,66 @@
                 font-size: 1rem;
             }
 
-/* --- ИСПРАВЛЕНИЕ ДЛЯ МОБИЛЬНОГО РЕЦЕПТА --- */
-            .sub-layout { grid-template-columns: 1fr; }
-            
+            /* --- ИСПРАВЛЕНИЕ ДЛЯ МОБИЛЬНОГО РЕЦЕПТА --- */
+            .sub-layout {
+                grid-template-columns: 1fr;
+            }
+
             /* 1. Чиним кнопки и выносим крестик наверх, чтобы не мешал */
-            .a4-actions { flex-wrap: wrap; justify-content: center; margin-bottom: 15px; }
-            .a4-actions .btn { padding: 12px 5px; font-size: 0.7rem; flex: 1; margin: 0 5px; }
-            #a4RecipeModal .close-modal { position: absolute !important; top: -40px !important; right: 0 !important; color: var(--color-white) !important; margin: 0 !important; }
-            
+            .a4-actions {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+
+            .a4-actions .btn {
+                padding: 12px 5px;
+                font-size: 0.7rem;
+                flex: 1;
+                margin: 0 5px;
+            }
+
+            #a4RecipeModal .close-modal {
+                position: absolute !important;
+                top: -40px !important;
+                right: 0 !important;
+                color: var(--color-white) !important;
+                margin: 0 !important;
+            }
+
             /* 2. Включаем правильный скролл для всего рецепта */
-            #a4RecipeModal .modal-content { max-height: 85vh; overflow-y: auto; padding-top: 40px !important; }
-            .a4-page { flex-direction: column-reverse; aspect-ratio: auto; height: auto !important; min-height: auto; overflow: visible !important; }
-            .a4-content { padding: 20px; overflow-y: visible !important; }
-            .a4-img-col { width: 100%; height: 250px; }
-            .a4-img { position: relative; border-left: none; border-bottom: 5px solid #cba365; }
+            #a4RecipeModal .modal-content {
+                max-height: 85vh;
+                overflow-y: auto;
+                padding-top: 40px !important;
+            }
+
+            .a4-page {
+                flex-direction: column-reverse;
+                aspect-ratio: auto;
+                height: auto !important;
+                min-height: auto;
+                overflow: visible !important;
+            }
+
+            .a4-content {
+                padding: 20px;
+                overflow-y: visible !important;
+            }
+
+            .a4-img-col {
+                width: 100%;
+                height: 250px;
+            }
+
+            .a4-img {
+                position: relative;
+                border-left: none;
+                border-bottom: 5px solid #cba365;
+            }
         }
 
-/* ИСПРАВЛЕНО: Стили для печати рецепта (Форсируем строго 1 страницу А4 Альбомная) */
+        /* ИСПРАВЛЕНО: Стили для печати рецепта (Форсируем строго 1 страницу А4 Альбомная) */
         @media print {
             @page {
                 size: A4 landscape;
@@ -1407,27 +1450,32 @@
                 page-break-after: avoid !important;
                 page-break-before: avoid !important;
             }
-        } /* <--- ЗДЕСЬ ЗАКАНЧИВАЮТСЯ СТИЛИ ПРИНТЕРА */
+        }
+
+        /* <--- ЗДЕСЬ ЗАКАНЧИВАЮТСЯ СТИЛИ ПРИНТЕРА */
 
         /* ==========================================
            ЖЕЛЕЗОБЕТОННЫЙ ФИКС СКРОЛЛА РЕЦЕПТОВ НА ТЕЛЕФОНЕ
            ========================================== */
         @media (max-width: 768px) {
             #a4RecipeModal {
-                align-items: flex-start !important; 
-                padding: 20px 10px !important; 
-                overflow-y: auto !important; 
+                align-items: flex-start !important;
+                padding: 20px 10px !important;
+                overflow-y: auto !important;
             }
+
             #a4RecipeModal .modal-content {
-                max-height: none !important; 
+                max-height: none !important;
                 overflow: visible !important;
                 margin: auto;
             }
+
             .a4-page {
                 height: auto !important;
                 min-height: unset !important;
                 overflow: visible !important;
             }
+
             .a4-content {
                 overflow: visible !important;
                 padding-bottom: 30px !important;
@@ -2025,7 +2073,7 @@
                         </div>
 
                         <div class="calc-total">
-                            Итого: <span id="ord-total-price">399</span> ₽
+                            Итого: <span id="ord-total-price">450</span> ₽
                         </div>
 
                         <button type="submit" class="btn btn-solid" style="width: 100%;" id="ord-submit-btn">Оформить и
@@ -2262,9 +2310,10 @@
         window.addEventListener('load', arrangeHistoryImages);
         window.addEventListener('resize', arrangeHistoryImages);
 
+
         /* ==========================================
-           ЛОГИКА ПОДПИСКИ (БЕЗ PDF)
-           ========================================== */
+                   ЛОГИКА ПОДПИСКИ
+                   ========================================== */
         function openSubscriptionModal() {
             document.getElementById('subscriptionModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -2304,27 +2353,26 @@
             const comment = document.getElementById('sub-comment').value;
             const total = document.getElementById('sub-total-price').textContent;
 
-            const BOT_TOKEN = '8644896151:AAFKNH5zH9PfflMk3AW2Om2LYQBrvFugQWQ';
-            const CHAT_ID = '-4873174115';
-
             const textMessage = `🔥 НОВАЯ ПОДПИСКА!\n\nИмя: ${name}\nТелефон: ${phone}\nМасло: ${typeText}\nКол-во: ${qty} шт/мес\nСумма: ${total} руб/мес\nАдрес: ${address}\nКомментарий: ${comment || 'Нет'}`;
 
+            // ВАША ССЫЛКА ИЗ GOOGLE (Обязательно вставьте свою между кавычек!):
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyJ0uRNUXNdCsQufUGuJOvzgCuH5DR6JSUfbZV2ZFEQsffIx13y6GAVucKIiyqdhy4z/exec';
+
             try {
-                const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                // Отправляем как plain/text, чтобы браузер не блокировал запрос (CORS)
+                await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: CHAT_ID, text: textMessage })
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ text: textMessage })
                 });
 
-                if (response.ok) {
-                    alert('Подписка успешно оформлена! Мы свяжемся с вами в ближайшее время.');
-                    closeModal('subscriptionModal');
-                } else {
-                    alert('Ошибка при отправке. Пожалуйста, свяжитесь с нами через мессенджеры.');
-                }
+                alert('Подписка успешно оформлена! Мы свяжемся с вами в ближайшее время.');
+                closeModal('subscriptionModal');
+                document.getElementById('subscriptionForm').reset();
+                calcSubscription(); // Сбрасываем калькулятор
             } catch (error) {
                 console.error(error);
-                alert('Произошла ошибка при отправке.');
+                alert('Произошла ошибка при отправке. Пожалуйста, свяжитесь с нами через мессенджеры.');
             } finally {
                 btn.textContent = 'Оформить и отправить';
                 btn.disabled = false;
@@ -2332,7 +2380,7 @@
         }
 
         /* ==========================================
-           ЛОГИКА РАЗОВОГО ЗАКАЗА (БЕЗ PDF)
+           ЛОГИКА РАЗОВОГО ЗАКАЗА
            ========================================== */
         function openSingleOrderModal(type) {
             document.getElementById('singleOrderModal').classList.add('active');
@@ -2349,7 +2397,7 @@
 
             img.src = type === 'brown' ? 'maslo.jpg' : 'maslo1.jpg';
 
-            let oilPrice = type === 'brown' ? 399 : 490;
+            let oilPrice = type === 'brown' ? 450 : 550; // Старые цены для разового заказа из вашего кода
             const total = oilPrice * qty;
             totalEl.textContent = total;
         }
@@ -2369,33 +2417,30 @@
             const total = document.getElementById('ord-total-price').textContent;
             const orderNum = 'ORD-' + Math.floor(Math.random() * 10000);
 
-            const BOT_TOKEN = '8644896151:AAFKNH5zH9PfflMk3AW2Om2LYQBrvFugQWQ';
-            const CHAT_ID = '-4873174115';
-
             const textMessage = `🛒 НОВЫЙ ЗАКАЗ: ${orderNum}\n\nИмя: ${name}\nТелефон: ${phone}\nМасло: ${typeText}\nКол-во: ${qty} шт\nСумма: ${total} руб\nАдрес: ${address}\nКомментарий: ${comment || 'Нет'}`;
 
+            // ВАША ССЫЛКА ИЗ GOOGLE (Обязательно вставьте свою между кавычек!):
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyJ0uRNUXNdCsQufUGuJOvzgCuH5DR6JSUfbZV2ZFEQsffIx13y6GAVucKIiyqdhy4z/exec';
+
             try {
-                const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: CHAT_ID, text: textMessage })
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ text: textMessage })
                 });
 
-                if (response.ok) {
-                    alert('Заказ успешно оформлен! Мы свяжемся с вами в ближайшее время.');
-                    closeModal('singleOrderModal');
-                } else {
-                    alert('Ошибка при отправке. Пожалуйста, свяжитесь с нами через мессенджеры.');
-                }
+                alert('Заказ успешно оформлен! Мы свяжемся с вами в ближайшее время.');
+                closeModal('singleOrderModal');
+                document.getElementById('singleOrderForm').reset();
+                calcSingleOrder(); // Сбрасываем калькулятор
             } catch (error) {
                 console.error(error);
-                alert('Произошла ошибка при отправке.');
+                alert('Произошла ошибка при отправке. Пожалуйста, свяжитесь с нами через мессенджеры.');
             } finally {
                 btn.textContent = 'Оформить и отправить';
                 btn.disabled = false;
             }
         }
-
         /* ==========================================
            ЛОГИКА РЕЦЕПТОВ (А4)
            ========================================== */
@@ -2517,49 +2562,49 @@
             document.getElementById('a4RecipeModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-function downloadRecipePDF() {
-    const originalElement = document.getElementById('hidden-recipe-pdf');
-    const clone = originalElement.cloneNode(true);
-    clone.id = 'temp-pdf-clone';
+        function downloadRecipePDF() {
+            const originalElement = document.getElementById('hidden-recipe-pdf');
+            const clone = originalElement.cloneNode(true);
+            clone.id = 'temp-pdf-clone';
 
-    // 1. Фиксируем клон строго в левом верхнем углу окна
-    // z-index: -1000 спрячет его за текущим интерфейсом, так что вы его не увидите
-    clone.style.display = 'flex';
-    clone.style.position = 'fixed';
-    clone.style.top = '0px';
-    clone.style.left = '0px';
-    clone.style.zIndex = '-1000';
-    clone.style.backgroundColor = '#f2ebd9'; // Страховка от прозрачного фона
+            // 1. Фиксируем клон строго в левом верхнем углу окна
+            // z-index: -1000 спрячет его за текущим интерфейсом, так что вы его не увидите
+            clone.style.display = 'flex';
+            clone.style.position = 'fixed';
+            clone.style.top = '0px';
+            clone.style.left = '0px';
+            clone.style.zIndex = '-1000';
+            clone.style.backgroundColor = '#f2ebd9'; // Страховка от прозрачного фона
 
-    document.body.appendChild(clone);
+            document.body.appendChild(clone);
 
-    const opt = {
-        margin: 0,
-        filename: 'Рецепт_МАНДОЛИНА.pdf',
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: {
-            scale: 2,
-            useCORS: true,
-            // 2. ЖЕСТКО направляем "камеру" в левый верхний угол
-            x: 0,
-            y: 0,
-            scrollX: 0,
-            scrollY: 0,
-            width: 1122, // Точная ширина А4 в пикселях
-            height: 793  // Точная высота А4 в пикселях
-        },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
-    };
+            const opt = {
+                margin: 0,
+                filename: 'Рецепт_МАНДОЛИНА.pdf',
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas: {
+                    scale: 2,
+                    useCORS: true,
+                    // 2. ЖЕСТКО направляем "камеру" в левый верхний угол
+                    x: 0,
+                    y: 0,
+                    scrollX: 0,
+                    scrollY: 0,
+                    width: 1122, // Точная ширина А4 в пикселях
+                    height: 793  // Точная высота А4 в пикселях
+                },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
+            };
 
-    // 3. Генерируем без задержек (fixed позиция рендерится мгновенно)
-    html2pdf().set(opt).from(clone).save().then(() => {
-        // Обязательно убираем за собой мусор
-        document.body.removeChild(clone);
-    }).catch(err => {
-        console.error("Ошибка PDF: ", err);
-        alert("Произошла ошибка при сохранении. Попробуйте нажать 'Распечатать'.");
-    });
-}
+            // 3. Генерируем без задержек (fixed позиция рендерится мгновенно)
+            html2pdf().set(opt).from(clone).save().then(() => {
+                // Обязательно убираем за собой мусор
+                document.body.removeChild(clone);
+            }).catch(err => {
+                console.error("Ошибка PDF: ", err);
+                alert("Произошла ошибка при сохранении. Попробуйте нажать 'Распечатать'.");
+            });
+        }
     </script>
 </body>
 
