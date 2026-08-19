@@ -2502,43 +2502,49 @@
             document.getElementById('a4RecipeModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        function downloadRecipePDF() {
-            const originalElement = document.getElementById('hidden-recipe-pdf');
+function downloadRecipePDF() {
+    const originalElement = document.getElementById('hidden-recipe-pdf');
+    const clone = originalElement.cloneNode(true);
+    clone.id = 'temp-pdf-clone';
 
-            // 1. Создаем клон
-            const clone = originalElement.cloneNode(true);
-            clone.id = 'temp-pdf-clone';
+    // 1. Фиксируем клон строго в левом верхнем углу окна
+    // z-index: -1000 спрячет его за текущим интерфейсом, так что вы его не увидите
+    clone.style.display = 'flex';
+    clone.style.position = 'fixed';
+    clone.style.top = '0px';
+    clone.style.left = '0px';
+    clone.style.zIndex = '-1000';
+    clone.style.backgroundColor = '#f2ebd9'; // Страховка от прозрачного фона
 
-            // 2. Делаем его видимым для браузера, но прячем за левый край экрана!
-            clone.style.display = 'flex';
-            clone.style.position = 'absolute';
-            clone.style.left = '-9999px';
-            clone.style.top = '0';
+    document.body.appendChild(clone);
 
-            // 3. Добавляем в документ
-            document.body.appendChild(clone);
+    const opt = {
+        margin: 0,
+        filename: 'Рецепт_МАНДОЛИНА.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: {
+            scale: 2,
+            useCORS: true,
+            // 2. ЖЕСТКО направляем "камеру" в левый верхний угол
+            x: 0,
+            y: 0,
+            scrollX: 0,
+            scrollY: 0,
+            width: 1122, // Точная ширина А4 в пикселях
+            height: 793  // Точная высота А4 в пикселях
+        },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
+    };
 
-            const opt = {
-                margin: 0,
-                filename: 'Рецепт_МАНДОЛИНА.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: {
-                    scale: 2,
-                    useCORS: true, // Разрешает брать картинки с серверов
-                    scrollY: 0,    // Фиксируем виртуальную камеру
-                    windowWidth: 1200
-                },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
-            };
-
-            // 4. Даем браузеру 300мс на отрисовку, затем делаем PDF
-            setTimeout(() => {
-                html2pdf().set(opt).from(clone).save().then(() => {
-                    // 5. Убираем клон
-                    document.body.removeChild(clone);
-                });
-            }, 300);
-        }
+    // 3. Генерируем без задержек (fixed позиция рендерится мгновенно)
+    html2pdf().set(opt).from(clone).save().then(() => {
+        // Обязательно убираем за собой мусор
+        document.body.removeChild(clone);
+    }).catch(err => {
+        console.error("Ошибка PDF: ", err);
+        alert("Произошла ошибка при сохранении. Попробуйте нажать 'Распечатать'.");
+    });
+}
     </script>
 </body>
 
